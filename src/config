@@ -34,7 +34,7 @@
 # CYGWIN
 ####################################################################
 
-ARCH                     = LINUX-ARM
+ARCH                     = LINUX-NATIVE
 BIGENDIAN                = N
 NATIVETOOLSPREFIX        = 
 ARMTOOLSPREFIX           = $(TARGET_CROSS)
@@ -140,23 +140,23 @@ HAVE_XPM_SUPPORT         = Y
 ####################################################################
 HAVE_JPEG_SUPPORT        = Y
 INCJPEG                  = .
-LIBJPEG                  = $(STAGING_DIR)/usr/lib/libjpeg.so
+LIBJPEG                  = -ljpeg
 
 ####################################################################
 # PNG support via libpng and libz
 ####################################################################
 HAVE_PNG_SUPPORT         = Y
 INCPNG                   = .
-LIBPNG                   = $(STAGING_DIR)/usr/lib/libpng.so
+LIBPNG                   = -lpng
 INCZ                     = .
-LIBZ                     = $(STAGING_DIR)/usr/lib/libz.so
+LIBZ                     = -lz
 
 ####################################################################
 # TIFF support through libtiff
 ####################################################################
 HAVE_TIFF_SUPPORT        = N
 INCTIFF                  = .
-LIBTIFF                  = $(STAGING_DIR)/usr/lib/libtiff.so
+LIBTIFF                  = -ltiff
 
 ####################################################################
 # PCF font support - .pcf/.pcf.gz loadable fonts
@@ -170,7 +170,7 @@ PCF_FONT_DIR             = "fonts/pcf"
 ####################################################################
 HAVE_FREETYPE_2_SUPPORT  = Y
 INCFT2LIB                = $(STAGING_DIR)/usr/include
-LIBFT2LIB                = $(STAGING_DIR)/usr/lib/libfreetype.so
+LIBFT2LIB                = -lfreetype
 FREETYPE_FONT_DIR        = "fonts/truetype"
 
 ####################################################################
@@ -179,7 +179,7 @@ FREETYPE_FONT_DIR        = "fonts/truetype"
 ####################################################################
 HAVE_T1LIB_SUPPORT       = N
 T1LIB_FONT_DIR           = "fonts/type1"
-INCT1LIB                 = /usr/include
+INCT1LIB                 = $(STAGING_DIR)/usr/include
 LIBT1LIB                 = /usr/lib/libt1.so
 
 ####################################################################
@@ -250,7 +250,7 @@ UPDATEREGIONS            = Y
 ####################################################################
 
 # X11 and FBE startup screen width, height, (depth for palette mode only)
-SCREEN_WIDTH             = 470
+SCREEN_WIDTH             = 480
 SCREEN_HEIGHT            = 272
 SCREEN_DEPTH             = 8
 
