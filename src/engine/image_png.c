@@ -32,7 +32,7 @@
 static void
 png_read_buffer(png_structp pstruct, png_bytep pointer, png_size_t size)
 {
-	GdImageBufferRead(pstruct->io_ptr, pointer, size);
+	GdImageBufferRead(png_get_io_ptr(pstruct), pointer, size);
 }
 
 PSD
