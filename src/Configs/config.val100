@@ -33,16 +33,20 @@
 # ECOS
 # CYGWIN
 ####################################################################
+BASE          = $(HOME)/VAL100DK_package/buildroot/buildroot-2015.05/output/host
+BRTARG        = $(HOME)/VAL100DK_package/buildroot/buildroot-2015.05/output/target
+SYSROOT       = $(BASE)/usr/arm-buildroot-linux-gnueabihf/sysroot
+PREFIX        = $(BASE)/usr/bin/arm-buildroot-linux-gnueabihf-
 
 ARCH                     = LINUX-ARM
 BIGENDIAN                = N
 NATIVETOOLSPREFIX        = 
-ARMTOOLSPREFIX           = $(TARGET_CROSS)
+ARMTOOLSPREFIX           = $(PREFIX)
 MIPSTOOLSPREFIX          = mipsel-linux-
 POWERPCTOOLSPREFIX       = powerpc-linux-
 SHTOOLSPREFIX            = sh-linux-gnu
-AVR32TOOLSPREFIX         = avr32-linux-
-BLACKFINTOOLSPREFIX      = bfin-uclinux-
+AVR32TOOLSPREFIX	 	 = avr32-linux-
+BLACKFINTOOLSPREFIX	 	 = bfin-uclinux-
 PSPTOOLSPREFIX           = psp-
 
 ####################################################################
@@ -140,23 +144,23 @@ HAVE_XPM_SUPPORT         = Y
 ####################################################################
 HAVE_JPEG_SUPPORT        = Y
 INCJPEG                  = .
-LIBJPEG                  = $(STAGING_DIR)/usr/lib/libjpeg.so
+LIBJPEG                  = $(BRTARG)/usr/lib/libjpeg.so
 
 ####################################################################
 # PNG support via libpng and libz
 ####################################################################
 HAVE_PNG_SUPPORT         = Y
 INCPNG                   = .
-LIBPNG                   = $(STAGING_DIR)/usr/lib/libpng.so
+LIBPNG                   = $(BRTARG)/usr/lib/libpng.so
 INCZ                     = .
-LIBZ                     = $(STAGING_DIR)/usr/lib/libz.so
+LIBZ                     = $(BRTARG)/usr/lib/libz.so
 
 ####################################################################
 # TIFF support through libtiff
 ####################################################################
 HAVE_TIFF_SUPPORT        = N
 INCTIFF                  = .
-LIBTIFF                  = $(STAGING_DIR)/usr/lib/libtiff.so
+LIBTIFF                  = $(BRTARG)/usr/lib/libtiff.so
 
 ####################################################################
 # PCF font support - .pcf/.pcf.gz loadable fonts
@@ -169,8 +173,8 @@ PCF_FONT_DIR             = "fonts/pcf"
 # Truetype fonts - .ttf loadable fonts thru Freetype 2.x
 ####################################################################
 HAVE_FREETYPE_2_SUPPORT  = Y
-INCFT2LIB                = $(STAGING_DIR)/usr/include
-LIBFT2LIB                = $(STAGING_DIR)/usr/lib/libfreetype.so
+INCFT2LIB                = $(SYSROOT)/usr/include
+LIBFT2LIB                = $(SYSROOT)/usr/lib/libfreetype.so
 FREETYPE_FONT_DIR        = "fonts/truetype"
 
 ####################################################################
