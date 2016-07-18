@@ -37,7 +37,7 @@
 ARCH                     = LINUX-NATIVE
 BIGENDIAN                = N
 NATIVETOOLSPREFIX        = 
-ARMTOOLSPREFIX           = $(TARGET_CROSS)
+ARMTOOLSPREFIX           = arm-linux-
 MIPSTOOLSPREFIX          = mipsel-linux-
 POWERPCTOOLSPREFIX       = powerpc-linux-
 SHTOOLSPREFIX            = sh-linux-gnu
@@ -64,7 +64,7 @@ GPROF                    = N
 MICROWIN                 = N
 NANOX                    = Y
 ENGINE                   = Y
-SHAREDLIBS               = Y
+SHAREDLIBS               = N
 OBJFRAMEWORK             = N
 
 ####################################################################
@@ -72,7 +72,7 @@ OBJFRAMEWORK             = N
 # Demos to build
 #
 ####################################################################
-MICROWINDEMO             = Y
+MICROWINDEMO             = N
 NANOXDEMO                = Y
 
 ####################################################################
@@ -106,8 +106,7 @@ FBEMULATOR               = Y
 # define MWPF_TRUECOLOR233  /* pixel is packed 8 bits BGR 332*/
 #
 ####################################################################
-#SCREEN_PIXTYPE           = MWPF_TRUECOLOR8888
-SCREEN_PIXTYPE           = MWPF_TRUECOLORABGR
+SCREEN_PIXTYPE           = MWPF_TRUECOLOR8888
 
 ####################################################################
 # NanoX: Put Y to the following line to link the nano-X application
@@ -256,11 +255,15 @@ SCREEN_DEPTH             = 8
 
 # X Window screen driver
 # USE_EXPOSURE for XFree86 4.x or if backing store not working
-X11                      = N
+X11                      = Y
 USE_EXPOSURE             = N
+ifeq ($(X11), Y)
+X11LDFLAGS               = -lX11
+MW_CORE_LIBS            += -lX11
+endif
 
 # Framebuffer screen driver
-FRAMEBUFFER              = Y
+FRAMEBUFFER              = N
 
 # memory screen driver
 SCRMEM                   = N
@@ -311,7 +314,7 @@ INVERT4BPP               = N
 GPMMOUSE                 = N
 SERMOUSE                 = N
 SUNMOUSE                 = N
-NOMOUSE                  = Y
+NOMOUSE                  = N
 IPAQMOUSE                = N
 ZAURUSMOUSE              = N
 TUXMOUSE                 = N
@@ -338,7 +341,7 @@ IPAQKBD                  = N
 LIRCKBD                  = N
 PSPKBD                   = N
 EVENTKBD                 = N
-NOKBD                    = Y
+NOKBD                    = N
 # Secondary keyboard drivers for IR input
 LIRCKBD2                 = N
 
